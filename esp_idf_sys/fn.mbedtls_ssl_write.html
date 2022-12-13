@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="\brief          Try to write exactly ‘len’ application data bytes"><meta name="keywords" content="rust, rustlang, rust-lang, mbedtls_ssl_write"><title>mbedtls_ssl_write in esp_idf_sys - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-9def1262ebc682c9.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../static.files/ayu-94f39d4346842c1e.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../esp_idf_sys/index.html"><div class="logo-container"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><h2></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../esp_idf_sys/index.html"><div class="logo-container"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></div></a><div class="sidebar-elems"><h2><a href="index.html">In esp_idf_sys</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1 class="fqn">Function <a href="index.html">esp_idf_sys</a>::<wbr><a class="fn" href="#">mbedtls_ssl_write</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/esp_idf_sys/home/runner/work/esp-idf-svc/esp-idf-svc/target/riscv32imc-esp-espidf/debug/build/esp-idf-sys-52d38aab77427db2/out/bindings.rs.html#46885-46889">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><div class="item-decl"><pre class="rust fn"><code>pub unsafe extern &quot;C&quot; fn mbedtls_ssl_write(<br>&nbsp;&nbsp;&nbsp;&nbsp;ssl: *mut <a class="struct" href="struct.mbedtls_ssl_context.html" title="struct esp_idf_sys::mbedtls_ssl_context">mbedtls_ssl_context</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;buf: *const c_uchar,<br>&nbsp;&nbsp;&nbsp;&nbsp;len: usize<br>) -&gt; c_int</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>\brief          Try to write exactly ‘len’ application data bytes</p>
+<p>\warning        This function will do partial writes in some cases. If the
+return value is non-negative but less than length, the
+function must be called again with updated arguments:
+buf + ret, len - ret (if ret is the return value) until
+it returns a value equal to the last ‘len’ argument.</p>
+<p>\param ssl      SSL context
+\param buf      buffer holding the data
+\param len      how many bytes must be written</p>
+<p>\return         The (non-negative) number of bytes actually written if
+successful (may be less than \p len).
+\return         #MBEDTLS_ERR_SSL_WANT_READ or #MBEDTLS_ERR_SSL_WANT_WRITE
+if the handshake is incomplete and waiting for data to
+be available for reading from or writing to the underlying
+transport - in this case you must call this function again
+when the underlying transport is ready for the operation.
+\return         #MBEDTLS_ERR_SSL_ASYNC_IN_PROGRESS if an asynchronous
+operation is in progress (see
+mbedtls_ssl_conf_async_private_cb()) - in this case you
+must call this function again when the operation is ready.
+\return         #MBEDTLS_ERR_SSL_CRYPTO_IN_PROGRESS if a cryptographic
+operation is in progress (see mbedtls_ecp_set_max_ops()) -
+in this case you must call this function again to complete
+the handshake when you’re done attending other tasks.
+\return         Another SSL error code - in this case you must stop using
+the context (see below).</p>
+<p>\warning        If this function returns something other than
+a non-negative value,
+#MBEDTLS_ERR_SSL_WANT_READ,
+#MBEDTLS_ERR_SSL_WANT_WRITE,
+#MBEDTLS_ERR_SSL_ASYNC_IN_PROGRESS or
+#MBEDTLS_ERR_SSL_CRYPTO_IN_PROGRESS,
+you must stop using the SSL context for reading or writing,
+and either free it or call \c mbedtls_ssl_session_reset()
+on it before re-using it for a new connection; the current
+connection must be closed.</p>
+<p>\note           When this function returns #MBEDTLS_ERR_SSL_WANT_WRITE/READ,
+it must be called later with the <em>same</em> arguments,
+until it returns a value greater that or equal to 0. When
+the function returns #MBEDTLS_ERR_SSL_WANT_WRITE there may be
+some partial data in the output buffer, however this is not
+yet sent.</p>
+<p>\note           If the requested length is greater than the maximum
+fragment length (either the built-in limit or the one set
+or negotiated with the peer), then:
+- with TLS, less bytes than requested are written.
+- with DTLS, MBEDTLS_ERR_SSL_BAD_INPUT_DATA is returned.
+\c mbedtls_ssl_get_output_max_frag_len() may be used to
+query the active maximum fragment length.</p>
+<p>\note           Attempting to write 0 bytes will result in an empty TLS
+application record being sent.</p>
+</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="esp_idf_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (37d7de337 2022-12-12)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>

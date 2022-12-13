@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["Details",""],["MqttProtocolVersion",""]],"struct":[["EspMqttClient",""],["EspMqttMessage",""],["LwtConfiguration",""],["MqttClientConfiguration",""]],"type":[["MessageId",""]]};

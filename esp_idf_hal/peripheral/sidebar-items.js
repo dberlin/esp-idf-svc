@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["PeripheralRef","An exclusive reference to a peripheral."]],"trait":[["Peripheral","Trait for any type that can be used as a peripheral of type `P`."]]};

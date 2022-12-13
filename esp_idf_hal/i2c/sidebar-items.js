@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["Operation","Transactional I2C operation."]],"mod":[["config","I2C configuration"]],"struct":[["I2C0",""],["I2cDriver",""],["I2cError",""],["I2cSlaveDriver",""]],"trait":[["I2c",""]],"type":[["I2cConfig",""],["I2cSlaveConfig",""]]};

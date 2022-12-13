@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["remaining_unread_bytes",""],["remaining_write_capacity",""]],"mod":[["config","UART configuration"]],"struct":[["SerialError",""],["UART0",""],["UART1",""],["UartDriver","Serial abstraction"],["UartRxDriver","Serial receiver"],["UartTxDriver","Serial transmitter"]],"trait":[["Uart",""]],"type":[["UartConfig",""]]};

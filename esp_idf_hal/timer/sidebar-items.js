@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["config","Timer configuration"]],"struct":[["TIMER00",""],["TIMER10",""],["TimerDriver",""]],"trait":[["Timer",""]],"type":[["TimerConfig",""]]};

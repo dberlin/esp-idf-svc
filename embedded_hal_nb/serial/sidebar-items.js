@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["ErrorKind","Serial error kind"]],"trait":[["Error","Serial error"],["ErrorType","Serial error type trait"],["Read","Read half of a serial interface"],["Write","Write half of a serial interface"]]};

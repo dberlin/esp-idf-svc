@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["AuthMethod",""],["Capability",""],["Configuration",""],["Protocol",""],["SecondaryChannel",""]],"struct":[["AccessPointConfiguration",""],["AccessPointInfo",""],["ClientConfiguration",""]],"trait":[["Wifi",""]]};

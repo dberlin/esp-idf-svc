@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["anyhow","byteorder","cfg_if","const_format","embedded_can","embedded_hal","embedded_hal_nb","embedded_io","embedded_svc","enumset","esp_idf_hal","esp_idf_svc","esp_idf_sys","hash32","heapless","libc","log","nb","no_std_net","serde","stable_deref_trait","uncased"];

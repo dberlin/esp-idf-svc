@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["ReadExactError","Error returned by [`Read::read_exact`]"],["WriteFmtError","Error returned by [`Write::write_fmt`]"]],"trait":[["BufRead","Blocking buffered reader."],["Read","Blocking reader."],["Seek","Blocking seek within streams."],["Write","Blocking writer."]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["active","Returns true if the currently active core is executing an ISR request"],["free","Executes closure f in an interrupt-free context"],["set_isr_yielder","Safety"],["with_isr_yield_signal",""]],"struct":[["IsrCriticalSection",""],["IsrCriticalSectionGuard",""]]};

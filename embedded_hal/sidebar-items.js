@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["delay","Delays"],["digital","Digital I/O"],["i2c","Blocking I2C API"],["serial","Serial traits"],["spi","Blocking SPI master mode traits."]]};

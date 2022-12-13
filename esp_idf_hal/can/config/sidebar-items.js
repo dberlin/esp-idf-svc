@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["Filter","Is used to filter out unwanted CAN IDs (messages)."],["Timing","CAN timing"]],"struct":[["Config",""]]};

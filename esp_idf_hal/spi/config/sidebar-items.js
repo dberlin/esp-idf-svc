@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["Duplex","Specify the communication mode with the device"]],"struct":[["Config","SPI Device configuration"],["V02Type",""]]};
