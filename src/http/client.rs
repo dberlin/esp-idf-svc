@@ -16,13 +16,14 @@ use alloc::string::ToString;
 use ::log::*;
 
 use embedded_svc::http::client::*;
-use embedded_svc::io::{ErrorType, Read, Write};
+use embedded_svc::io::{Read, Write};
 
 use crate::sys::*;
 
 use uncased::{Uncased, UncasedStr};
 
 use crate::handle::RawHandle;
+use crate::io::ErrorType;
 use crate::io::EspIOError;
 use crate::private::common::Newtype;
 use crate::private::cstr::*;

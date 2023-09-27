@@ -18,13 +18,14 @@ use ::log::{info, warn};
 
 use embedded_svc::http::headers::content_type;
 use embedded_svc::http::*;
-use embedded_svc::io::{ErrorType, Read, Write};
+use embedded_svc::io::{Read, Write};
 
 use crate::sys::*;
 
 use uncased::{Uncased, UncasedStr};
 
 use crate::handle::RawHandle;
+use crate::io::ErrorType;
 use crate::io::EspIOError;
 use crate::private::common::Newtype;
 use crate::private::cstr::to_cstring_arg;

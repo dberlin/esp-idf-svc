@@ -106,7 +106,7 @@ impl Default for EspFirmwareInfoLoader {
     }
 }
 
-impl io::ErrorType for EspFirmwareInfoLoader {
+impl crate::io::ErrorType for EspFirmwareInfoLoader {
     type Error = EspIOError;
 }
 
@@ -124,7 +124,7 @@ impl FirmwareInfoLoader for EspFirmwareInfoLoader {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct EspOtaUpdate<'a> {
     update_partition: *const esp_partition_t,
     update_handle: esp_ota_handle_t,
@@ -185,7 +185,7 @@ impl<'a> EspOtaUpdate<'a> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct EspOtaUpdateFinished<'a> {
     update_partition: *const esp_partition_t,
     _data: PhantomData<&'a mut ()>,
@@ -250,7 +250,7 @@ impl EspOta {
         Ok(())
     }
 
-    pub fn initiate_update(&mut self) -> Result<EspOtaUpdate<'_>, EspError> {
+    pub fn initiate_update(&mut self) -> Result<EspOtaUpdate<'static>, EspError> {
         // This might return a null pointer in case no valid partition can be found.
         // We don't have to handle this error in here, as this will implicitly trigger an error
         // as soon as the null pointer is provided to `esp_ota_begin`.
@@ -360,7 +360,7 @@ impl Drop for EspOta {
     }
 }
 
-impl io::ErrorType for EspOta {
+impl crate::io::ErrorType for EspOta {
     type Error = EspIOError;
 }
 
@@ -402,7 +402,7 @@ impl Ota for EspOta {
 
 unsafe impl<'a> Send for EspOtaUpdate<'a> {}
 
-impl<'a> io::ErrorType for EspOtaUpdate<'a> {
+impl<'a> crate::io::ErrorType for EspOtaUpdate<'a> {
     type Error = EspIOError;
 }
 
@@ -444,7 +444,7 @@ impl<'a> io::Write for EspOtaUpdate<'a> {
 
 unsafe impl<'a> Send for EspOtaUpdateFinished<'a> {}
 
-impl<'a> io::ErrorType for EspOtaUpdateFinished<'a> {
+impl<'a> crate::io::ErrorType for EspOtaUpdateFinished<'a> {
     type Error = EspIOError;
 }
 
